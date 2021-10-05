@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"strings"
 )
 
@@ -28,4 +29,8 @@ func newDeck() deck {
 
 func (d deck) getSingleString() string {
 	return strings.Join(d, "\n")
+}
+
+func (d deck) saveToFile(fileName string) error {
+	return ioutil.WriteFile(fileName, []byte(d.getSingleString()), 0666)
 }
