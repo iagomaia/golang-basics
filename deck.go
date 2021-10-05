@@ -23,6 +23,10 @@ func newDeck() deck {
 	return cards
 }
 
-func saveToFile() {
-	
+func (d deck) getSingleString() string {
+	singleString := ""
+	for _, card := range d {
+		singleString += card + "\n"
+	}
+	return singleString
 }
