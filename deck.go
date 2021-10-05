@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type deck []string
 
@@ -24,9 +27,5 @@ func newDeck() deck {
 }
 
 func (d deck) getSingleString() string {
-	singleString := ""
-	for _, card := range d {
-		singleString += card + "\n"
-	}
-	return singleString
+	return strings.Join(d, "\n")
 }
