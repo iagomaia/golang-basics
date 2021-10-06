@@ -2,9 +2,8 @@ package main
 
 func main() {
 	cards := newDeck()
+	cards.shuffle()
 	cards.saveToFile("deck.txt")
-}
-
-func newCard() string {
-	return "Five of Diamonds"
+	readCards := newDeckFromFile("deck.txt")
+	readCards.print()
 }

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"strings"
 )
 
@@ -49,8 +50,13 @@ func newDeckFromFile(fileName string) deck {
 	deckString := string(bs)
 	stringSlice := strings.Split(deckString, "\n")
 	cards := []string{}
-	for _, card := range stringSlice {
-		cards = append(cards, card)
-	}
+	cards = append(cards, stringSlice...)
 	return cards
+}
+
+func (d deck) shuffle() {
+	for i := range d {
+		newPosition := rand.Intn(len(d) - 1)
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
 }
