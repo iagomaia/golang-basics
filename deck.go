@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
 	"math/rand"
+	"os"
 	"strings"
 	"time"
 )
@@ -41,7 +41,8 @@ func (d deck) saveToFile(fileName string) error {
 func readFromFile(fileName string) []byte {
 	b, err := ioutil.ReadFile(fileName)
 	if err != nil {
-		log.Print(err)
+		fmt.Println("Error: ", err)
+		os.Exit(1)
 	}
 	return b
 }
